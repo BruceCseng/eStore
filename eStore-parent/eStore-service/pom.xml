@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>eStore-parent</artifactId>
+        <groupId>com.it.estore</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>eStore-service</artifactId>
+    <packaging>pom</packaging>
+
+    <description>eStore各大微服务的父工程</description>
+    <modules>
+        <module>eStore-service-goods</module>
+        <module>eStore-service-file</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.it.estore</groupId>
+            <artifactId>eStore-common-db</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>
