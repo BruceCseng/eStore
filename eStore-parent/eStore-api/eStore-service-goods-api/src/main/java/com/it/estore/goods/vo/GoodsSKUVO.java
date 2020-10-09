@@ -34,7 +34,7 @@ public class GoodsSKUVO {
 
     @ApiModelProperty(value = "库存预警数量",required = false)
     @Column(name = "alert_num")
-    private Integer alert_num;
+    private Integer alertNum;
 
     @ApiModelProperty(value = "商品图片",required = false)
     @Column(name = "image")
@@ -50,27 +50,27 @@ public class GoodsSKUVO {
 
     @ApiModelProperty(value = "创建时间",required = false)
     @Column(name = "create_time")
-    private String create_time;
+    private String createTime;
 
     @ApiModelProperty(value = "更新时间",required = false)
     @Column(name = "update_time")
-    private String update_time;
+    private String updateTime;
 
     @ApiModelProperty(value = "SPUID",required = false)
     @Column(name = "spu_id")
-    private Integer spu_id;
+    private Integer spuId;
 
     @ApiModelProperty(value = "品类id",required = false)
     @Column(name = "category_id")
-    private Integer category_id;
+    private Integer categoryId;
 
     @ApiModelProperty(value = "品类名称",required = false)
     @Column(name = "category_name")
-    private String category_name;
+    private String categoryName;
 
     @ApiModelProperty(value = "品牌名称",required = false)
     @Column(name = "brand_name")
-    private String brand_name;
+    private String brandName;
 
     @ApiModelProperty(value = "规格",required = false)
     @Column(name = "spec")
@@ -78,11 +78,11 @@ public class GoodsSKUVO {
 
     @ApiModelProperty(value = "销量",required = false)
     @Column(name = "sale_num")
-    private Integer sale_num;
+    private Integer saleNum;
 
     @ApiModelProperty(value = "评论数",required = false)
     @Column(name = "comment_num")
-    private Integer comment_num;
+    private Integer commentNum;
 
     @ApiModelProperty(value = "商品状态1-正常，2-下架，3-下架",required = false)
     @Column(name = "status")
@@ -128,12 +128,12 @@ public class GoodsSKUVO {
         this.num = num;
     }
 
-    public Integer getAlert_num() {
-        return alert_num;
+    public Integer getAlertNum() {
+        return alertNum;
     }
 
-    public void setAlert_num(Integer alert_num) {
-        this.alert_num = alert_num;
+    public void setAlertNum(Integer alertNum) {
+        this.alertNum = alertNum;
     }
 
     public String getImage() {
@@ -160,52 +160,52 @@ public class GoodsSKUVO {
         this.weight = weight;
     }
 
-    public String getCreate_time() {
-        return create_time;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(String create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public String getUpdate_time() {
-        return update_time;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdate_time(String update_time) {
-        this.update_time = update_time;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public Integer getSpu_id() {
-        return spu_id;
+    public Integer getSpuId() {
+        return spuId;
     }
 
-    public void setSpu_id(Integer spu_id) {
-        this.spu_id = spu_id;
+    public void setSpuId(Integer spuId) {
+        this.spuId = spuId;
     }
 
-    public Integer getCategory_id() {
-        return category_id;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(Integer category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getCategory_name() {
-        return category_name;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public String getBrand_name() {
-        return brand_name;
+    public String getBrandName() {
+        return brandName;
     }
 
-    public void setBrand_name(String brand_name) {
-        this.brand_name = brand_name;
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 
     public String getSpec() {
@@ -216,20 +216,20 @@ public class GoodsSKUVO {
         this.spec = spec;
     }
 
-    public Integer getSale_num() {
-        return sale_num;
+    public Integer getSaleNum() {
+        return saleNum;
     }
 
-    public void setSale_num(Integer sale_num) {
-        this.sale_num = sale_num;
+    public void setSaleNum(Integer saleNum) {
+        this.saleNum = saleNum;
     }
 
-    public Integer getComment_num() {
-        return comment_num;
+    public Integer getCommentNum() {
+        return commentNum;
     }
 
-    public void setComment_num(Integer comment_num) {
-        this.comment_num = comment_num;
+    public void setCommentNum(Integer commentNum) {
+        this.commentNum = commentNum;
     }
 
     public String getStatus() {

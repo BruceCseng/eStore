@@ -1,5 +1,6 @@
 package com.it.estore.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.it.estore.dao.CategoryMapper;
 import com.it.estore.goods.vo.CategoryVO;
@@ -43,13 +44,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryVO findOneById(Long id) {
-
-        return null;
+        return categoryMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public PageInfo<CategoryVO> findPage(Integer page, Integer size) {
-        return null;
+        PageHelper.startPage(page,size);
+        List<CategoryVO> categoryVOS = categoryMapper.selectAll();
+        return new PageInfo<>(categoryVOS);
     }
 
     @Override

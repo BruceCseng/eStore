@@ -89,7 +89,7 @@ public class GoodsSPUVO {
 
     @ApiModelProperty(value = "是否删除",required = false)
     @Column(name = "is_delete")
-    private String isDdelete;
+    private String isDelete;
 
     @ApiModelProperty(value = "审核状态",required = false)
     @Column(name = "status")
@@ -247,12 +247,12 @@ public class GoodsSPUVO {
         this.isEnableSpec = isEnableSpec;
     }
 
-    public String getIsDdelete() {
-        return isDdelete;
+    public String getIsDelete() {
+        return isDelete;
     }
 
-    public void setIsDdelete(String isDdelete) {
-        this.isDdelete = isDdelete;
+    public void setIsDelete(String isDelete) {
+        this.isDelete = isDelete;
     }
 
     public String getStatus() {
