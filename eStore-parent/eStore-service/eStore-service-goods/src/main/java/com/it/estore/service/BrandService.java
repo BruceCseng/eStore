@@ -7,6 +7,13 @@ import java.util.List;
 
 public interface BrandService {
 
+    /**
+     * 根据分类id查询品牌集合
+     * @param categoryId
+     * @return
+     */
+    List<BrandVO> findByCategoryId(Long categoryId);
+
     List<BrandVO> findAll();
 
     BrandVO findById(Long id);
