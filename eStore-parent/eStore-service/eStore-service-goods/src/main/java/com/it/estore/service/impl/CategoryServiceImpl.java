@@ -5,10 +5,12 @@ import com.github.pagehelper.PageInfo;
 import com.it.estore.dao.CategoryMapper;
 import com.it.estore.goods.vo.CategoryVO;
 import com.it.estore.service.CategoryService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
     @Resource
