@@ -2,8 +2,10 @@ package com.it.estore.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.it.estore.dao.CategoryMapper;
 import com.it.estore.dao.GoodsParaMapper;
 import com.it.estore.goods.vo.AlbumVO;
+import com.it.estore.goods.vo.CategoryVO;
 import com.it.estore.goods.vo.GoodsParaVO;
 import com.it.estore.service.GoodsParaService;
 import org.apache.commons.lang.StringUtils;
@@ -18,6 +20,17 @@ public class GoodsParaServiceImpl implements GoodsParaService {
 
     @Resource
     private GoodsParaMapper goodsParaMapper;
+
+    @Resource
+    private CategoryMapper categoryMapper;
+
+    @Override
+    public List<GoodsParaVO> findByCategory(Long categoryId) {
+        CategoryVO categoryVO = categoryMapper.selectByPrimaryKey(categoryId);
+        GoodsParaVO goodsParaVO = new GoodsParaVO();
+        goodsParaVO.setTemplateId(categoryVO.getTemplateId());
+        return goodsParaMapper.select(goodsParaVO);
+    }
 
     @Override
     public void add(GoodsParaVO paraVO) {

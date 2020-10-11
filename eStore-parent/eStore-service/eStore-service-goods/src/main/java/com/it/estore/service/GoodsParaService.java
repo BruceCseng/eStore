@@ -7,6 +7,12 @@ import java.util.List;
 
 public interface GoodsParaService {
 
+    /**
+     * 根据分类id查询参数集合->分类的template_id ->根据template_id查询参数集合
+     * @param categoryId
+     */
+    List<GoodsParaVO> findByCategory(Long categoryId);
+
     void add(GoodsParaVO paraVO);
 
     void delete(Long id);

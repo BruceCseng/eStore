@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @ApiModel(description = "Bruce", value = "Bruce")
 @Table(name = "tb_sku")
@@ -50,19 +51,19 @@ public class GoodsSKUVO {
 
     @ApiModelProperty(value = "创建时间",required = false)
     @Column(name = "create_time")
-    private String createTime;
+    private Date createTime;
 
     @ApiModelProperty(value = "更新时间",required = false)
     @Column(name = "update_time")
-    private String updateTime;
+    private Date updateTime;
 
     @ApiModelProperty(value = "SPUID",required = false)
     @Column(name = "spu_id")
-    private Integer spuId;
+    private Long spuId;
 
     @ApiModelProperty(value = "品类id",required = false)
     @Column(name = "category_id")
-    private Integer categoryId;
+    private Long categoryId;
 
     @ApiModelProperty(value = "品类名称",required = false)
     @Column(name = "category_name")
@@ -160,35 +161,35 @@ public class GoodsSKUVO {
         this.weight = weight;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public String getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
-    public Integer getSpuId() {
+    public Long getSpuId() {
         return spuId;
     }
 
-    public void setSpuId(Integer spuId) {
+    public void setSpuId(Long spuId) {
         this.spuId = spuId;
     }
 
-    public Integer getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Integer categoryId) {
+    public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
 

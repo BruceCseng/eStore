@@ -29,23 +29,23 @@ public class GoodsSPUVO {
 
     @ApiModelProperty(value = "品牌id",required = false)
     @Column(name = "brand_id")
-    private Integer brandId;
+    private Long brandId;
 
     @ApiModelProperty(value = "一级分类",required = false)
     @Column(name = "category1_id")
-    private Integer category1Id;
+    private Long category1Id;
 
     @ApiModelProperty(value = "二级分类",required = false)
     @Column(name = "category2_id")
-    private Integer category2Id;
+    private Long category2Id;
 
     @ApiModelProperty(value = "三级分类",required = false)
     @Column(name = "category3_id")
-    private Integer category3Id;
+    private Long category3Id;
 
     @ApiModelProperty(value = "运费模板id",required = false)
     @Column(name = "freight_id")
-    private Integer freightId;
+    private Long freightId;
 
     @ApiModelProperty(value = "图片",required = false)
     @Column(name = "image")
@@ -127,43 +127,43 @@ public class GoodsSPUVO {
         this.caption = caption;
     }
 
-    public Integer getBrandId() {
+    public Long getBrandId() {
         return brandId;
     }
 
-    public void setBrandId(Integer brandId) {
+    public void setBrandId(Long brandId) {
         this.brandId = brandId;
     }
 
-    public Integer getCategory1Id() {
+    public Long getCategory1Id() {
         return category1Id;
     }
 
-    public void setCategory1Id(Integer category1Id) {
+    public void setCategory1Id(Long category1Id) {
         this.category1Id = category1Id;
     }
 
-    public Integer getCategory2Id() {
+    public Long getCategory2Id() {
         return category2Id;
     }
 
-    public void setCategory2Id(Integer category2Id) {
+    public void setCategory2Id(Long category2Id) {
         this.category2Id = category2Id;
     }
 
-    public Integer getCategory3Id() {
+    public Long getCategory3Id() {
         return category3Id;
     }
 
-    public void setCategory3Id(Integer category3Id) {
+    public void setCategory3Id(Long category3Id) {
         this.category3Id = category3Id;
     }
 
-    public Integer getFreightId() {
+    public Long getFreightId() {
         return freightId;
     }
 
-    public void setFreightId(Integer freightId) {
+    public void setFreightId(Long freightId) {
         this.freightId = freightId;
     }
 

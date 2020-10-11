@@ -2,7 +2,9 @@ package com.it.estore.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.it.estore.dao.CategoryMapper;
 import com.it.estore.dao.GoodsSpecMapper;
+import com.it.estore.goods.vo.CategoryVO;
 import com.it.estore.goods.vo.GoodsSpecVO;
 import com.it.estore.service.GoodsSpecService;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,17 @@ public class GoodsSpecServiceImpl implements GoodsSpecService {
 
     @Resource
     private GoodsSpecMapper goodsSpecMapper;
+
+    @Resource
+    private CategoryMapper categoryMapper;
+
+    @Override
+    public List<GoodsSpecVO> findByCategory(Long categoryId) {
+        CategoryVO categoryVO = categoryMapper.selectByPrimaryKey(categoryId);
+        GoodsSpecVO specVO = new GoodsSpecVO();
+        specVO.setTemplateId(categoryVO.getTemplateId());
+        return goodsSpecMapper.select(specVO);
+    }
 
     @Override
     public void add(GoodsSpecVO goodsSpecVO) {
