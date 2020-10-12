@@ -14,6 +14,7 @@
     <description>所有微服务工程抽取JavaBean或者feign</description>
     <modules>
         <module>eStore-service-goods-api</module>
+        <module>eStore-service-user-api</module>
     </modules>
 
     <dependencies>
