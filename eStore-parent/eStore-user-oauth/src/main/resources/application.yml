@@ -33,6 +33,7 @@ auth:
   clientSecret: eStore # 秘钥
   cookieDomain: localhost
   cookieMaxAge: -1
+  url: http://127.0.0.1:18000//oauth/token
 
 encrypt:
   key-store:

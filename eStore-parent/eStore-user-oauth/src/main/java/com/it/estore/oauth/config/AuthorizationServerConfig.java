@@ -57,7 +57,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         // clients.jdbc(dataSource).clients(clientDetails());
        clients.inMemory()
                 .withClient("eStore")          //客户端id
-                .secret("Pr0d1234")                      //秘钥
+                .secret("eStore")                      //秘钥
                 .redirectUris("http://localhost")       //重定向地址
                 .accessTokenValiditySeconds(120)          //访问令牌有效期
                 .refreshTokenValiditySeconds(120)         //刷新令牌有效期

@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping(value = "/userx")
+@RequestMapping(value = "/auth")
 public class AuthController {
 
     //客户端ID

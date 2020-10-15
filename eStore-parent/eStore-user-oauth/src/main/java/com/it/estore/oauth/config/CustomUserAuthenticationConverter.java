@@ -33,6 +33,8 @@ public class CustomUserAuthenticationConverter extends DefaultUserAuthentication
             UserDetails userDetails = userDetailsService.loadUserByUsername(name);
             userJwt = (UserJwt) userDetails;
         }
+
+        // 扩展令牌里面需要添加的属性
         response.put("name", userJwt.getName());
         response.put("id", userJwt.getId());
         //公司 response.put("compy", "songsi");

@@ -2,6 +2,8 @@ package com.it.estore.oauth.service.impl;
 
 import com.it.estore.oauth.service.AuthService;
 import com.it.estore.oauth.utils.AuthToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.http.HttpEntity;
@@ -9,25 +11,34 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Base64Utils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
 import java.util.Map;
 
 @Service
 public class AuthServiceImpl implements AuthService {
 
-    @Resource
+    @Autowired
     private LoadBalancerClient loadBalancerClient;
 
-    @Resource
+    @Autowired
     private RestTemplate restTemplate;
+
+    private static final String GRANT_TYPE = "password";
+
+    //获取令牌的url
+    @Value("${auth.url}")
+    private String authPath;
+
+    @Value("${spring.application.name}")
+    private String serviceId;
 
     /**
      * 授权认证方法
@@ -57,23 +68,26 @@ public class AuthServiceImpl implements AuthService {
      */
     private AuthToken applyToken(String username, String password, String clientId, String clientSecret) {
         //选中认证服务的地址
-        ServiceInstance serviceInstance = loadBalancerClient.choose("user-auth");
+        ServiceInstance serviceInstance = loadBalancerClient.choose(serviceId);
         if (serviceInstance == null) {
             throw new RuntimeException("找不到对应的服务");
         }
         //获取令牌的url
-        String path = serviceInstance.getUri().toString() + "/oauth/token";
         //定义body
         MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
         //授权方式
-        formData.add("grant_type", "password");
+        formData.add("grant_type", GRANT_TYPE);
         //账号
         formData.add("username", username);
         //密码
         formData.add("password", password);
         //定义头
         MultiValueMap<String, String> header = new LinkedMultiValueMap<>();
-        header.add("Authorization", httpbasic(clientId, clientSecret));
+        try {
+            header.add("Authorization", httpbasic(clientId, clientSecret));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         //指定 restTemplate当遇到400或401响应时候也不要抛出异常，也要正常返回值
         restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {
             @Override
@@ -87,7 +101,7 @@ public class AuthServiceImpl implements AuthService {
         Map map = null;
         try {
             //http请求spring security的申请令牌接口
-            ResponseEntity<Map> mapResponseEntity = restTemplate.exchange(path, HttpMethod.POST,new HttpEntity<MultiValueMap<String, String>>(formData, header), Map.class);
+            ResponseEntity<Map> mapResponseEntity = restTemplate.exchange(authPath, HttpMethod.POST,new HttpEntity<MultiValueMap<String, String>>(formData, header), Map.class);
             //获取响应数据
             map = mapResponseEntity.getBody();
         } catch (RestClientException e) {
@@ -119,12 +133,13 @@ public class AuthServiceImpl implements AuthService {
      * @param clientSecret
      * @return
      */
-    private String httpbasic(String clientId,String clientSecret){
+    private String httpbasic(String clientId,String clientSecret) throws UnsupportedEncodingException {
         //将客户端id和客户端密码拼接，按“客户端id:客户端密码”
         String string = clientId+":"+clientSecret;
         //进行base64编码
-        byte[] encode = Base64Utils.encode(string.getBytes());
-        return "Basic "+new String(encode);
+        // byte[] encode = Base64Utils.encode(string.getBytes());
+        byte[] encode = Base64.getEncoder().encode(string.getBytes());
+        return "Basic "+new String(encode,"UTF-8");
     }
 
 }
