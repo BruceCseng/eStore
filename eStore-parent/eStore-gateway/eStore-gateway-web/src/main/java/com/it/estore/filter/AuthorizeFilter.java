@@ -34,9 +34,15 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
 
+        //3.判断 是否为登录的URL 如果是 放行
+        if(request.getURI().getPath().startsWith("/api/auth/login")){
+            return chain.filter(exchange);
+        }
+
         // 获取用户令牌，有三处地方获取令牌
         // 1.头文件
         String token = request.getHeaders().getFirst(AUTHORIZE_TOKEN);
+
         // 2.参数中
         if(StringUtils.isEmpty(token)){
             token = request.getQueryParams().getFirst(AUTHORIZE_TOKEN);
@@ -63,6 +69,9 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
             return response.setComplete();
         }
+        // 将令牌封装到头文件中
+        request.mutate().header(AUTHORIZE_TOKEN,"Bearer "+token);
+
         // 有效放行
         return chain.filter(exchange);
     }

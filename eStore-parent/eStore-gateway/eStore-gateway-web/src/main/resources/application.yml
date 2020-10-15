@@ -40,7 +40,7 @@ spring:
             - id: estore_user_route
               uri: lb://user
               predicates:
-              - Path=/auth/user/**,/api/address/**,/api/city/**
+              - Path=/api/user/**,/api/address/**,/api/city/**
               filters:
                 # 将请求路径中的第一个路径去掉，请求路径以/ 区分，一个/代表一个路径
               - StripPrefix=1

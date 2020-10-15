@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @ApiModel(description = "Bruce",value = "Bruce")
 @Table(name = "tb_user")
@@ -30,11 +29,11 @@ public class UserVO {
 
     @ApiModelProperty(value = "创建时间",required = false)
     @Column(name = "created")
-    private Date created;
+    private String created;
 
     @ApiModelProperty(value = "修改时间",required = false)
     @Column(name = "updated")
-    private Date updated;
+    private String updated;
 
     @ApiModelProperty(value = "会员来源",required = false)
     @Column(name = "source_type")
@@ -74,23 +73,23 @@ public class UserVO {
 
     @ApiModelProperty(value = "会员等级",required = false)
     @Column(name = "user_level")
-    private Integer userLevel;
+    private String userLevel;
 
     @ApiModelProperty(value = "会员积分",required = false)
     @Column(name = "points")
-    private Integer points;
+    private String points;
 
     @ApiModelProperty(value = "经验值",required = false)
     @Column(name = "experience_value")
-    private Integer experienceValue;
+    private String experienceValue;
 
     @ApiModelProperty(value = "生日",required = false)
     @Column(name = "birthday")
-    private Date birthday;
+    private String birthday;
 
     @ApiModelProperty(value = "最后登录时间",required = false)
     @Column(name = "last_login_time")
-    private Date lastLoginTime;
+    private String lastLoginTime;
 
     public String getUsername() {
         return username;
@@ -124,19 +123,19 @@ public class UserVO {
         this.email = email;
     }
 
-    public Date getCreated() {
+    public String getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(String created) {
         this.created = created;
     }
 
-    public Date getUpdated() {
+    public String getUpdated() {
         return updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(String updated) {
         this.updated = updated;
     }
 
@@ -212,43 +211,43 @@ public class UserVO {
         this.sex = sex;
     }
 
-    public Integer getUserLevel() {
+    public String getUserLevel() {
         return userLevel;
     }
 
-    public void setUserLevel(Integer userLevel) {
+    public void setUserLevel(String userLevel) {
         this.userLevel = userLevel;
     }
 
-    public Integer getPoints() {
+    public String getPoints() {
         return points;
     }
 
-    public void setPoints(Integer points) {
+    public void setPoints(String points) {
         this.points = points;
     }
 
-    public Integer getExperienceValue() {
+    public String getExperienceValue() {
         return experienceValue;
     }
 
-    public void setExperienceValue(Integer experienceValue) {
+    public void setExperienceValue(String experienceValue) {
         this.experienceValue = experienceValue;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public Date getLastLoginTime() {
+    public String getLastLoginTime() {
         return lastLoginTime;
     }
 
-    public void setLastLoginTime(Date lastLoginTime) {
+    public void setLastLoginTime(String lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 }

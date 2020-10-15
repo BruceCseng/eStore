@@ -1,0 +1,42 @@
+server:
+  port: 18000
+spring:
+  application:
+    name: user-auth
+  redis:
+    host: 119.45.119.154
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/eStore_user?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 52Java
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8070/eureka
+  instance:
+    prefer-ip-address: true
+
+# 配置信息，给UserLoginController用的
+auth:
+  ttl: 3600  #token存储到redis的过期时间
+  clientId: eStore
+  clientSecret: eStore # 秘钥
+  cookieDomain: localhost
+  cookieMaxAge: -1
+
+encrypt:
+  key-store:
+    location: classpath:/eStore.jks
+    secret: eStore
+    alias: eStore
+    password: eStore
