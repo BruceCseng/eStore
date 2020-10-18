@@ -18,6 +18,9 @@ public class Result<T> {
     @ApiModelProperty(value = "逻辑数据",required = true)
     private T data;
 
+    public Result() {
+    }
+
     public Result(boolean flag, Integer code, String message, Object data) {
         this.flag = flag;
         this.code = code;

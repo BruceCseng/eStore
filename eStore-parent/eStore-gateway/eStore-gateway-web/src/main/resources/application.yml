@@ -22,7 +22,7 @@ spring:
               # 用户请求的域名规则配置。所有以xxx.com的请求都将被路由到http://localhost:8071微服务
               #- Host=127.0.0.1**
               #所有以/brand开始的请求，都路由http://localhost:8071的微服务
-              - Path=/api/brand/**
+              - Path=/api/**
               # 所有以/api/brand的请求，都被路由到http://localhost:8071微服务
               # 希望该路径由微服务网关自动给我添加上/api前缀，每次请求真实微服务网关的时候，需要使用微服务网关将/api去掉
               filters:
@@ -45,7 +45,7 @@ spring:
                 # 将请求路径中的第一个路径去掉，请求路径以/ 区分，一个/代表一个路径
               - StripPrefix=1
   redis:
-    host: 192.168.31.32
+    host: 119.45.119.154
     port: 6379
 
 server:

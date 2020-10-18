@@ -42,7 +42,7 @@ public class GoodsSPUController {
         return new Result(true,StatueCode.SUCCESS_CODE,"审核成功");
     }
 
-    @GetMapping("/goods/{id}")
+    @GetMapping("/findGoodsById/{id}")
     public Result<GoodsVO> findGoodsById(@PathVariable(value = "id")Long id){
         GoodsVO goods = goodsSPUService.findGoodsById(id);
         return new Result<>(true,StatueCode.SUCCESS_CODE,"success",goods);

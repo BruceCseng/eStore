@@ -7,12 +7,14 @@ import com.it.estore.service.UserService;
 import com.it.estore.user.vo.UserVO;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Resource
@@ -131,18 +133,6 @@ public class UserServiceImpl implements UserService {
             // 性别，1男，0女
             if(!StringUtils.isEmpty(user.getSex())){
                 criteria.andEqualTo("sex",user.getSex());
-            }
-            // 会员等级
-            if(!StringUtils.isEmpty(user.getUserLevel())){
-                criteria.andEqualTo("userLevel",user.getUserLevel());
-            }
-            // 积分
-            if(!StringUtils.isEmpty(user.getPoints())){
-                criteria.andEqualTo("points",user.getPoints());
-            }
-            // 经验值
-            if(!StringUtils.isEmpty(user.getExperienceValue())){
-                criteria.andEqualTo("experienceValue",user.getExperienceValue());
             }
             // 出生年月日
             if(!StringUtils.isEmpty(user.getBirthday())){

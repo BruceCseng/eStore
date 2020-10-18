@@ -21,7 +21,7 @@ public class BrandController {
     @Resource
     private BrandService brandService;
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/findCategory/{id}")
     public Result<List<BrandVO>> findBrandByCategory(@PathVariable("id")Long id){
         List<BrandVO> brandVOS = brandService.findByCategoryId(id);
         return new Result<>(true, StatueCode.SUCCESS_CODE,"success",brandVOS);

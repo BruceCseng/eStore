@@ -5,10 +5,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @ApiModel(description = "Bruce",value = "Bruce")
 @Table(name = "tb_user")
-public class UserVO {
+public class UserVO implements Serializable {
 
     @ApiModelProperty(value = "用户名",required = false)
     @Id
@@ -73,15 +74,15 @@ public class UserVO {
 
     @ApiModelProperty(value = "会员等级",required = false)
     @Column(name = "user_level")
-    private String userLevel;
+    private Integer userLevel;
 
     @ApiModelProperty(value = "会员积分",required = false)
     @Column(name = "points")
-    private String points;
+    private Integer points;
 
     @ApiModelProperty(value = "经验值",required = false)
     @Column(name = "experience_value")
-    private String experienceValue;
+    private Integer experienceValue;
 
     @ApiModelProperty(value = "生日",required = false)
     @Column(name = "birthday")
@@ -211,27 +212,27 @@ public class UserVO {
         this.sex = sex;
     }
 
-    public String getUserLevel() {
+    public Integer getUserLevel() {
         return userLevel;
     }
 
-    public void setUserLevel(String userLevel) {
+    public void setUserLevel(Integer userLevel) {
         this.userLevel = userLevel;
     }
 
-    public String getPoints() {
+    public Integer getPoints() {
         return points;
     }
 
-    public void setPoints(String points) {
+    public void setPoints(Integer points) {
         this.points = points;
     }
 
-    public String getExperienceValue() {
+    public Integer getExperienceValue() {
         return experienceValue;
     }
 
-    public void setExperienceValue(String experienceValue) {
+    public void setExperienceValue(Integer experienceValue) {
         this.experienceValue = experienceValue;
     }
 

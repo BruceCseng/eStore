@@ -1,0 +1,5 @@
+请求地址：http://127.0.0.1:18000/auth/login
+请求方式：POST
+表单提交：
+username=admin
+password=admin

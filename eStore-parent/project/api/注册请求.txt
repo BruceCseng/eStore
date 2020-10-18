@@ -1,0 +1,24 @@
+请求地址：http://127.0.0.1:18000/auth/registry
+请求方式：POST
+{
+  "username": "tailuo",
+  "password": "xxxx",
+  "phone": "195645656",
+  "email": "1204471811",
+  "created": "2020-10-18 01:48:48",
+  "updated": "2020-10-18 01:48:48",
+  "sourceType": "1",
+  "nickName": "泰罗奥特曼",
+  "name": "泰罗",
+  "status": "1",
+  "headPic": "",
+  "qq": "154564687",
+  "isMobileCheck": "1",
+  "isEmailCheck": "0",
+  "sex": "男",
+  "userLevel": 1,
+  "points": 125478,
+  "experienceValue": 1200,
+  "birthday": "2000-10-18 01:48:48",
+  "lastLoginTime": "2020-10-18 01:48:48"
+}

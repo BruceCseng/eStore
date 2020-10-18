@@ -17,7 +17,7 @@ public class CategoryController {
     @Resource
     private CategoryService categoryService;
 
-    @GetMapping("/list/{pid}")
+    @GetMapping("/findCategoryList/{pid}")
     public Result<List<CategoryVO>> findByParentId(@PathVariable(value = "pid")Long pid){
         List<CategoryVO> categoryVOS = categoryService.findByParentId(pid);
         return new Result<>(true, StatueCode.SUCCESS_CODE,"查询成功",categoryVOS);

@@ -18,6 +18,8 @@
             <groupId>com.it.estore</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <!-- Oauth2.0认证服务，谁需要就要加入依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>

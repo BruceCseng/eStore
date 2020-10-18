@@ -39,12 +39,15 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Qualifier("userDetailsServiceImpl")
     @Autowired
     UserDetailsService userDetailsService;
+
     //授权认证管理器
     @Autowired
     AuthenticationManager authenticationManager;
+
     //令牌持久化存储接口
     @Autowired
     TokenStore tokenStore;
+
     @Autowired
     private CustomUserAuthenticationConverter customUserAuthenticationConverter;
     /***
@@ -54,13 +57,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        // clients.jdbc(dataSource).clients(clientDetails());
-       clients.inMemory()
+        // 从数据库加载客户端信息
+        clients.jdbc(dataSource).clients(clientDetails());
+       /**clients.inMemory()
                 .withClient("eStore")          //客户端id
                 .secret("eStore")                      //秘钥
                 .redirectUris("http://localhost")       //重定向地址
-                .accessTokenValiditySeconds(120)          //访问令牌有效期
-                .refreshTokenValiditySeconds(120)         //刷新令牌有效期
+                .accessTokenValiditySeconds(1200)          //访问令牌有效期
+                .refreshTokenValiditySeconds(1200)         //刷新令牌有效期
                 .authorizedGrantTypes(
                         "authorization_code",          //根据授权码生成令牌
                         "client_credentials",          //客户端认证
