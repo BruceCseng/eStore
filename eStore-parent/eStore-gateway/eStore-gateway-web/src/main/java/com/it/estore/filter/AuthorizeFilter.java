@@ -1,6 +1,5 @@
 package com.it.estore.filter;
 
-import com.it.estore.utils.JwtUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -15,6 +14,9 @@ import reactor.core.publisher.Mono;
 
 /**
  * 全局过滤器，实现用户权限鉴别
+ *
+ * @author mac
+ * @date 2020/10/31 3:25 下午
  */
 @Component
 public class AuthorizeFilter implements GlobalFilter, Ordered {
@@ -24,9 +26,10 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
 
     /**
      * 全局拦截
+     *
      * @param exchange
      * @param chain
-     * @return
+     * @return Mono<Void>
      */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -35,7 +38,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         ServerHttpResponse response = exchange.getResponse();
 
         //3.判断 是否为登录的URL 如果是 放行
-        if(request.getURI().getPath().startsWith("/api/auth/login")||request.getURI().getPath().startsWith("/api/auth/logout")){
+        if (request.getURI().getPath().startsWith("/api/auth/login") || request.getURI().getPath().startsWith("/api/auth/logout") || request.getURI().getPath().startsWith("/html")) {
             return chain.filter(exchange);
         }
 
@@ -44,37 +47,38 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         String token = request.getHeaders().getFirst(AUTHORIZE_TOKEN);
 
         // 2.参数中
-        if(StringUtils.isEmpty(token)){
+        if (StringUtils.isEmpty(token)) {
             token = request.getQueryParams().getFirst(AUTHORIZE_TOKEN);
         }
         // 3.cookie中
-        if(StringUtils.isEmpty(token)){
+        if (StringUtils.isEmpty(token)) {
             HttpCookie httpCookie = request.getCookies().getFirst(AUTHORIZE_TOKEN);
-            if(httpCookie!=null){
+            if (httpCookie != null) {
                 token = httpCookie.getValue();
             }
         }
         // 如果没有，则拦截
-        if(StringUtils.isEmpty(token)){
+        if (StringUtils.isEmpty(token)) {
             // 设置没有权限的状态码  401
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
             // 响应空数据
             return response.setComplete();
         }
         // 如果有令牌，则校验令牌是否有效
-        if(StringUtils.isEmpty(token)){
+        if (StringUtils.isEmpty(token)) {
             // 无效拦截
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
             return response.setComplete();
         }
         // 将令牌封装到头文件中
-        request.mutate().header(AUTHORIZE_TOKEN,"bearer "+token);
+        request.mutate().header(AUTHORIZE_TOKEN, "bearer " + token);
         // 有效放行
         return chain.filter(exchange);
     }
 
     /**
      * 排序，越小越先执行
+     *
      * @return
      */
     @Override

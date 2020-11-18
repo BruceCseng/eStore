@@ -12,5 +12,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface CategoryFeign {
 
     @GetMapping("/{id}")
-    public Result<CategoryVO> findById(@PathVariable(name = "id") Integer id);
+    Result<CategoryVO> findById(@PathVariable(name = "id") Integer id);
 }

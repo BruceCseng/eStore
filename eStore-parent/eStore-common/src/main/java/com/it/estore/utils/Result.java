@@ -3,8 +3,10 @@ package com.it.estore.utils;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
+
 @ApiModel(description = "Result",value = "Result")
-public class Result<T> {
+public class Result<T> implements Serializable {
 
     @ApiModelProperty(value = "执行是否成功",required = true)
     private boolean flag;

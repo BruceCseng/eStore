@@ -15,6 +15,7 @@
     <modules>
         <module>eStore-service-goods-api</module>
         <module>eStore-service-user-api</module>
+        <module>eStore-service-profile-api</module>
     </modules>
 
     <dependencies>

@@ -44,8 +44,24 @@ spring:
               filters:
                 # 将请求路径中的第一个路径去掉，请求路径以/ 区分，一个/代表一个路径
               - StripPrefix=1
+              # 简历跳转页面路由
+            - id: estore_profile_html_route
+              uri: lb://myweb-web
+              predicates:
+              - Path=/html/**
+              filters:
+               # 将请求路径中的第一个路径去掉，请求路径以/ 区分，一个/代表一个路径
+              - StripPrefix=1
+              # 简历微服务注册
+            - id: estore_profile_service_route
+              uri: lb://profile
+              predicates:
+              - Path=/profile/**
+              filters:
+              # 将请求路径中的第一个路径去掉，请求路径以/ 区分，一个/代表一个路径
+              - StripPrefix=1
   redis:
-    host: 119.45.119.154
+    host: 127.0.0.1
     port: 6379
 
 server:

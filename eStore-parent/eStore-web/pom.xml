@@ -12,4 +12,7 @@
     <packaging>pom</packaging>
 
     <description>eStore的web端</description>
+    <modules>
+        <module>eStore-myweb-search</module>
+    </modules>
 </project>

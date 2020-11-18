@@ -1,0 +1,38 @@
+server:
+  port: 18088
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8070/eureka
+  instance:
+    prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    connection-timeout: 10000
+  client:
+    config:
+      default: # 指定feignclients对应的名称 如果指定的是default 表示全局所有的client 的超时时间设置
+        connectTimeout: 10000
+        readTimeout: 10000
+        loggerLevel: basic
+
+#超时配置
+ribbon:
+  ReadTimeout: 300000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+spring:
+  thymeleaf:
+    cache: false
+  application:
+    name: myweb-web
+#  main:
+#    allow-bean-definition-overriding: true
