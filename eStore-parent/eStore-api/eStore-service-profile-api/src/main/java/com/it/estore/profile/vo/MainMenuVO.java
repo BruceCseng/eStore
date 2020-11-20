@@ -34,6 +34,10 @@ public class MainMenuVO implements Serializable {
     @Column(name = "href")
     private String href;
 
+    @ApiModelProperty(value = "目录顺序",required = false)
+    @Column(name = "sortNo")
+    private Integer sortNo;
+
     public Integer getId() {
         return id;
     }
@@ -56,5 +60,13 @@ public class MainMenuVO implements Serializable {
 
     public void setHref(String href) {
         this.href = href;
+    }
+
+    public Integer getSortNo() {
+        return sortNo;
+    }
+
+    public void setSortNo(Integer sortNo) {
+        this.sortNo = sortNo;
     }
 }

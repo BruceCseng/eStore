@@ -1,17 +1,15 @@
 package com.it.estore.service.impl;
 
-import com.it.estore.dao.AboutMeMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.it.estore.dao.BlogMapper;
-import com.it.estore.dao.CareerMapper;
+import com.it.estore.dao.ContentMapper;
 import com.it.estore.dao.MainMenuMapper;
-import com.it.estore.dao.ProfileMapper;
-import com.it.estore.dao.ProjectMapper;
-import com.it.estore.profile.vo.AboutMeVO;
+import com.it.estore.dao.MessageMapper;
 import com.it.estore.profile.vo.BlogVO;
-import com.it.estore.profile.vo.CareerVO;
+import com.it.estore.profile.vo.ContentVO;
 import com.it.estore.profile.vo.MainMenuVO;
-import com.it.estore.profile.vo.ProfileVO;
-import com.it.estore.profile.vo.ProjectVO;
+import com.it.estore.profile.vo.MessageVO;
 import com.it.estore.service.ProfileService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
@@ -30,37 +28,27 @@ import java.util.List;
 public class ProfileServiceImpl implements ProfileService {
 
     @Resource
-    private AboutMeMapper aboutMeMapper;
+    private ContentMapper contentMapper;
 
     @Resource
     private BlogMapper blogMapper;
 
     @Resource
-    private CareerMapper careerMapper;
-
-    @Resource
     private MainMenuMapper mainMenuMapper;
 
     @Resource
-    private ProfileMapper profileMapper;
-
-    @Resource
-    private ProjectMapper projectMapper;
-
+    private MessageMapper messageMapper;
 
     @Override
-    public AboutMeVO findSelfDesc() {
-        AboutMeVO param = new AboutMeVO();
-        param.setType("0");
-        return aboutMeMapper.selectOne(param);
+    public ContentVO findContent(ContentVO contentVO) {
+        Example example = this.createExample(contentVO);
+        return contentMapper.selectOneByExample(example);
     }
 
     @Override
-    public List<AboutMeVO> findAboutMeByType(String type) {
-        AboutMeVO aboutMeVO = new AboutMeVO();
-        aboutMeVO.setType(type);
-        Example example = createExample(aboutMeVO);
-        return aboutMeMapper.selectByExample(example);
+    public List<ContentVO> findContentList(ContentVO contentVO) {
+        Example example = this.createExample(contentVO);
+        return contentMapper.selectByExample(example);
     }
 
     @Override
@@ -69,36 +57,26 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public List<BlogVO> findAllBlog() {
-        return blogMapper.selectAll();
+    public PageInfo<BlogVO> findPage(Integer page, Integer size){
+        PageHelper.startPage(page,size);
+        List<BlogVO> albumVOS = blogMapper.selectAll();
+        return new PageInfo<>(albumVOS);
     }
 
     @Override
-    public List<CareerVO> findAllCareer() {
-        return careerMapper.selectAll();
+    public void addMessage(MessageVO messageVO) {
+        messageMapper.insertSelective(messageVO);
     }
 
-    @Override
-    public List<AboutMeVO> findAboutMe() {
-        return aboutMeMapper.selectAll();
-    }
-
-    @Override
-    public List<ProfileVO> findAllProfile() {
-        return profileMapper.selectAll();
-    }
-
-    @Override
-    public List<ProjectVO> findAllProject() {
-        return projectMapper.selectAll();
-    }
-
-    private Example createExample(AboutMeVO aboutMeVO) {
-        Example example = new Example(AboutMeVO.class);
+    private Example createExample(ContentVO contentVO) {
+        Example example = new Example(ContentVO.class);
         Example.Criteria criteria = example.createCriteria();
-        if (aboutMeVO != null) {
-            if (!StringUtils.isEmpty(aboutMeVO.getType())) {
-                criteria.andEqualTo("type", aboutMeVO.getType());
+        if (contentVO != null) {
+            if (!StringUtils.isEmpty(contentVO.getType())) {
+                criteria.andEqualTo("type", contentVO.getType());
+            }
+            if (contentVO.getParentId()!=null) {
+                criteria.andEqualTo("parentId", contentVO.getParentId());
             }
             return example;
         }

@@ -50,6 +50,10 @@ public class BlogVO implements Serializable {
     @Column(name = "content")
     private String content;
 
+    @ApiModelProperty(value = "博客地址",required = false)
+    @Column(name = "content_url")
+    private String contentUrl;
+
     public Integer getId() {
         return id;
     }
@@ -104,5 +108,13 @@ public class BlogVO implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getContentUrl() {
+        return contentUrl;
+    }
+
+    public void setContentUrl(String contentUrl) {
+        this.contentUrl = contentUrl;
     }
 }

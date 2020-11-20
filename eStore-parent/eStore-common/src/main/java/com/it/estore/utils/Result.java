@@ -3,21 +3,19 @@ package com.it.estore.utils;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.io.Serializable;
+@ApiModel(description = "Result", value = "Result")
+public class Result<T> {
 
-@ApiModel(description = "Result",value = "Result")
-public class Result<T> implements Serializable {
-
-    @ApiModelProperty(value = "执行是否成功",required = true)
+    @ApiModelProperty(value = "执行是否成功", required = true)
     private boolean flag;
 
-    @ApiModelProperty(value = "返回状态码",required = true)
+    @ApiModelProperty(value = "返回状态码", required = true)
     private Integer code;
 
-    @ApiModelProperty(value = "提示信息",required = true)
+    @ApiModelProperty(value = "提示信息", required = true)
     private String message;
 
-    @ApiModelProperty(value = "逻辑数据",required = true)
+    @ApiModelProperty(value = "逻辑数据", required = true)
     private T data;
 
     public Result() {

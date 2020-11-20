@@ -1,11 +1,10 @@
 package com.it.estore.service;
 
-import com.it.estore.profile.vo.AboutMeVO;
+import com.github.pagehelper.PageInfo;
 import com.it.estore.profile.vo.BlogVO;
-import com.it.estore.profile.vo.CareerVO;
+import com.it.estore.profile.vo.ContentVO;
 import com.it.estore.profile.vo.MainMenuVO;
-import com.it.estore.profile.vo.ProfileVO;
-import com.it.estore.profile.vo.ProjectVO;
+import com.it.estore.profile.vo.MessageVO;
 
 import java.util.List;
 
@@ -17,19 +16,13 @@ import java.util.List;
  */
 public interface ProfileService {
 
-    AboutMeVO findSelfDesc();
+    ContentVO findContent(ContentVO contentVO);
 
-    List<AboutMeVO> findAboutMeByType(String type);
+    List<ContentVO> findContentList(ContentVO contentVO);
 
     List<MainMenuVO> findAllMainMenu();
 
-    List<BlogVO> findAllBlog();
+    PageInfo<BlogVO> findPage(Integer page, Integer size);
 
-    List<CareerVO> findAllCareer();
-
-    List<AboutMeVO> findAboutMe();
-
-    List<ProfileVO> findAllProfile();
-
-    List<ProjectVO> findAllProject();
+    void addMessage(MessageVO messageVO);
 }

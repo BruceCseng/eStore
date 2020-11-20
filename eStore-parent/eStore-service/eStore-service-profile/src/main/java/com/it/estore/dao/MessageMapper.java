@@ -1,6 +1,6 @@
 package com.it.estore.dao;
 
-import com.it.estore.profile.vo.ProjectVO;
+import com.it.estore.profile.vo.MessageVO;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
@@ -9,5 +9,5 @@ import tk.mybatis.mapper.common.Mapper;
  * @Description: com.it.estore.dao
  * @Version: 1.0
  */
-public interface ProjectMapper extends Mapper<ProjectVO> {
+public interface MessageMapper extends Mapper<MessageVO> {
 }

@@ -17,8 +17,8 @@ import java.io.Serializable;
  * @Version: 1.0
  */
 @ApiModel(description = "Bruce",value = "Bruce")
-@Table(name = "tb_about_me")
-public class AboutMeVO implements Serializable {
+@Table(name = "tb_content")
+public class ContentVO implements Serializable {
 
     @ApiModelProperty(value = "关于我编号",required = false)
     @Id
@@ -53,6 +53,10 @@ public class AboutMeVO implements Serializable {
     @ApiModelProperty(value = "关于我类型",required = false)
     @Column(name = "type")
     private String type;
+
+    @ApiModelProperty(value = "所属目录",required = false)
+    @Column(name = "parent_id")
+    private Integer parentId;
 
     public Integer getId() {
         return id;
@@ -116,5 +120,13 @@ public class AboutMeVO implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 }
