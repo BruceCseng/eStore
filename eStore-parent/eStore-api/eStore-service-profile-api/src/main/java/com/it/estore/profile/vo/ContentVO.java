@@ -34,6 +34,10 @@ public class ContentVO implements Serializable {
     @Column(name = "about_desc")
     private String desc;
 
+    @ApiModelProperty(value = "关于我URL",required = false)
+    @Column(name = "url")
+    private String url;
+
     @ApiModelProperty(value = "关于我技能",required = false)
     @Column(name = "skill")
     private String skill;
@@ -128,5 +132,13 @@ public class ContentVO implements Serializable {
 
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

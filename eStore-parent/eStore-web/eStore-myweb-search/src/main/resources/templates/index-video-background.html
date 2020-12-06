@@ -178,45 +178,8 @@
                                     </div>
                                 </div>
                             </th:block>
-
-                            <!--
-                            <div class="col-md-4">
-                                <div class="skill-bar style-2">
-                                    <h5>Marketing</h5>
-                                    <div class="de-progress">
-                                        <div class="value"></div>
-                                        <div class="progress-bar" data-value="70%"></div>
-                                    </div>
-                                </div>
-
-                                <div class="skill-bar style-2">
-                                    <h5>Development</h5>
-                                    <div class="de-progress">
-                                        <div class="value"></div>
-                                        <div class="progress-bar" data-value="90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="skill-bar style-2">
-                                    <h5>Photography</h5>
-                                    <div class="de-progress">
-                                        <div class="value"></div>
-                                        <div class="progress-bar" data-value="90%"></div>
-                                    </div>
-                                </div>
-
-                                <div class="skill-bar style-2">
-                                    <h5>SEO</h5>
-                                    <div class="de-progress">
-                                        <div class="value"></div>
-                                        <div class="progress-bar" data-value="75%"></div>
-                                    </div>
-                                </div>-->
                             </div>
                         </div>
-                    </div>
                 </section>
 
                 <section id="section-services" data-bgcolor="#F6F7FB">
@@ -224,73 +187,25 @@
                         <div class="row">
                             <div class="col-lg-6 offset-lg-3">
                                 <div class="text-center">
-                                    <h2>Career</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <h2 th:text="${careerDesc.getData().getTitle()}"></h2>
+                                    <p th:text="${careerDesc.getData().getDesc()}"></p>
                                     <div class="spacer-30"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-4 col-md-6 mb30 wow fadeInRight" data-wow-delay="0s">
-                                <div class="f-box f-icon-left f-icon-circle f-border">
-                                    <i class="fa fa-laptop id-color"></i>
-                                    <div class="fb-text">
-                                        <h4>Website Design</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            <th:block th:each="career,stat:${careerList.getData()}">
+                                <div class="col-lg-4 col-md-6 mb30 wow fadeInRight" th:attr="data-wow-delay='.'+${career.getSkillValue()}+'s'">
+                                    <div class="f-box f-icon-left f-icon-circle f-border">
+                                        <i th:class="${career.getSkillImage()}"></i>
+                                        <div class="fb-text">
+                                            <h4 th:text="${career.getSkill()}"></h4>
+                                            <p th:text="${career.getSkillDesc()}"></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 mb30 wow fadeInRight" data-wow-delay=".25s">
-                                <div class="f-box f-icon-left f-icon-circle f-border">
-                                    <i class="fa fa-paper-plane-o id-color"></i>
-                                    <div class="fb-text">
-                                        <h4>Email Marketing</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 mb30 wow fadeInRight" data-wow-delay=".5s">
-                                <div class="f-box f-icon-left f-icon-circle f-border">
-                                    <i class="fa fa-line-chart id-color"></i>
-                                    <div class="fb-text">
-                                        <h4>Digital Analytics</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 mb30 wow fadeInRight" data-wow-delay="0s">
-                                <div class="f-box f-icon-left f-icon-circle f-border">
-                                    <i class="fa fa-object-group id-color"></i>
-                                    <div class="fb-text">
-                                        <h4>Visual Editor</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 mb30 wow fadeInRight" data-wow-delay=".25s">
-                                <div class="f-box f-icon-left f-icon-circle f-border">
-                                    <i class="fa fa-hdd-o id-color"></i>
-                                    <div class="fb-text">
-                                        <h4>Backup &amp; Security</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 mb30 wow fadeInRight" data-wow-delay=".5s">
-                                <div class="f-box f-icon-left f-icon-circle f-border">
-                                    <i class="fa fa-comments-o id-color"></i>
-                                    <div class="fb-text">
-                                        <h4>IT Consultancy</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                                    </div>
-                                </div>
-                            </div>
+                            </th:block>
                         </div>
                     </div>
                 </section>
@@ -299,9 +214,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 offset-md-2 text-center">
-                                <h2>I Am Available For Freelancer</h2>
+                                <h2 th:text="${hireMe.getData().getTitle()}"></h2>
                                 <div class="spacer-10"></div>
-                                <a href="#" class="btn-custom">Hire Me Now</a>
+                                <a class="btn-custom" th:href="${hireMe.getData().getUrl()}" th:text="${hireMe.getData().getDesc()}"></a>
                             </div>
                         </div>
                     </div>
@@ -313,8 +228,8 @@
                         <div class="row">
                             <div class="col-lg-6 offset-lg-3">
                                 <div class="text-center">
-                                    <h2>Testimonials</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <h2 th:text="${adviceDesc.getData().getTitle()}"></h2>
+                                    <p th:text="${adviceDesc.getData().getDesc()}"></p>
                                     <div class="spacer-30"></div>
                                 </div>
                             </div>
@@ -323,29 +238,12 @@
                         <div class="row">
                             <div class="col-md-8 offset-md-2">
                                 <div id="testimonial-carousel-single" class="owl-carousel owl-theme wow fadeInUp">
+                                    <th:block th:each="advice,stat:${adviceList.getData()}">
                                     <blockquote class="testimonial-big">
-                                        <img src="../images/people/1.jpg" alt="" />
-                                        I'm always impressed with the services. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip.
-
-                                        <span class="name">John, Customer</span>
+                                        <img alt="" th:src="${advice.getSkillImage()}" th:text="${advice.getSkillDesc()}"/>
+                                        <span class="name" th:text="${advice.getSkillValue()}">John, Customer</span>
                                     </blockquote>
-
-                                    <blockquote class="testimonial-big">
-                                        <img src="../images/people/2.jpg" alt="" />
-                                        I'm always impressed with the services. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip.
-
-                                        <span class="name">Sandra, Customer</span>
-                                    </blockquote>
-
-                                    <blockquote class="testimonial-big">
-                                        <img src="../images/people/3.jpg" alt="" />
-                                        I'm always impressed with the services. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip.
-
-                                        <span class="name">Michael, Customer</span>
-                                    </blockquote>
+                                    </th:block>
                                 </div>
                             </div>
                         </div>
@@ -359,8 +257,8 @@
                         <!-- portfolio filter begin -->
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <h5><span class="id-color">Portfolio</span></h5>
-                                <h2>I Love What I Do</h2>
+                                <h5><span class="id-color" th:text="${portfolioDesc.getData().getTitle()}"></span></h5>
+                                <h2 th:text="${portfolioDesc.getData().getDesc()}"></h2>
                             </div>
 
                             <div class="spacer-single"></div>
@@ -471,64 +369,36 @@
                         <div class="row">
                             <div class="col-lg-6 offset-lg-3">
                                 <div class="text-center">
-                                    <h2>Our Blog</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <h2 th:text="${blogDesc.getData().getTitle()}"></h2>
+                                    <p th:text="${blogDesc.getData().getDesc()}"></p>
                                     <div class="spacer-30"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-4 col-md-6 mb30">
-                                <div class="bloglist item">
-                                    <div class="post-content">
-                                        <div class="post-image">
-                                            <img alt="" src="../images/news/1.jpg" />
-                                            <div class="post-info">
-                                                <div class="inner"><span class="post-date">10 hours ago</span> <span class="post-author">Oscar Helman</span></div>
+                            <th:block th:each="blog,stat:${blogList.getData().getList()}">
+                                <div class="col-lg-4 col-md-6 mb30">
+                                    <div class="bloglist item">
+                                        <div class="post-content">
+                                            <div class="post-image">
+                                                <img alt="" th:src="${blog.getImageUrl()}"/>
+                                                <div class="post-info">
+                                                    <div class="inner">
+                                                        <span class="post-date" th:text="${blog.getCreateDate()}+' '+${blog.getIsHours()?'hours ago ':'days ago '}">
+                                                        </span>
+                                                        <span class="post-author" th:text="${blog.getAuthor()}"></span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="post-text">
-                                            <h4><a href="#">Better User Interface</a></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            <div class="post-text">
+                                                <h4><a th:href="${blog.getContentUrl()}" th:text="${blog.getTitle()}"></a></h4>
+                                                <p th:text="${blog.getDesc()}"></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 mb30">
-                                <div class="bloglist item">
-                                    <div class="post-content">
-                                        <div class="post-image">
-                                            <img alt="" src="../images/news/2.jpg" />
-                                            <div class="post-info">
-                                                <div class="inner"><span class="post-date">10 hours ago</span> <span class="post-author">Oscar Helman</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="post-text">
-                                            <h4><a href="#">Experts Web Design Tips</a></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 mb30">
-                                <div class="bloglist item">
-                                    <div class="post-content">
-                                        <div class="post-image">
-                                            <img alt="" src="../images/news/3.jpg" />
-                                            <div class="post-info">
-                                                <div class="inner"><span class="post-date">10 hours ago</span> <span class="post-author">Oscar Helman</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="post-text">
-                                            <h4><a href="#">Importance Of Web Design</a></h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </th:block>
                         </div>
                     </div>
                 </section>
@@ -539,14 +409,14 @@
                         <div class="row">
                             <div class="col-lg-6 offset-lg-3">
                                 <div class="text-center">
-                                    <h2>Contact Us</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <h2 th:text="${contactDesc.getData().getTitle()}"></h2>
+                                    <p th:text="${contactDesc.getData().getDesc()}"></p>
                                     <div class="spacer-30"></div>
                                 </div>
                             </div>
                         </div>
 
-                        <form name="contactForm" id="contact_form" class="row form-default" method="post" action="email.php">
+                        <form name="contactForm" id="contact_form" class="row form-default" method="post">
                             <div class="col-md-6">
                                 <div class="field-set">
                                     <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" />
@@ -578,6 +448,7 @@
                                     <input type="submit" id="send_message" value="Submit Form" class="btn btn-custom color-2" />
                                 </div>
                                 <div id="mail_success" class="success">Your message has been sent successfully.</div>
+                                <div id="mail_refresh" class="error">Please don't submit again.</div>
                                 <div id="mail_fail" class="error">Sorry, error occured this time sending your message.</div>
                             </div>
                         </form>
@@ -585,26 +456,16 @@
                         <div class="spacer-double"></div>
 
                         <div class="row text-center wow fadeInUp">
-                            <div class="col-md-4">
-                                <div class="wm-1"></div>
-                                <i class="icon_mobile id-color size40 mb20"></i>
-                                <h6 class="id-color">Call Us</h6>
-                                <p>(208) 333 9296</p>
-                            </div>
 
+                            <th:block th:each="contact,stat:${contactList.getData()}">
                             <div class="col-md-4">
                                 <div class="wm-1"></div>
-                                <i class="icon_house_alt id-color size40 mb20"></i>
-                                <h6 class="id-color">Visit Office</h6>
-                                <p>Collins Street West, London, UK</p>
+                                <i th:class="${contact.getSkillImage()}"></i>
+                                <h6 class="id-color" th:text="${contact.getTitle()}"></h6>
+                                <p th:text="${contact.getDesc()}"></p>
                             </div>
+                            </th:block>
 
-                            <div class="col-md-4">
-                                <div class="wm-1"></div>
-                                <i class="icon_mail_alt id-color size40 mb20"></i>
-                                <h6 class="id-color">Email Us</h6>
-                                <p>contact@jess-template.com</p>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -616,7 +477,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-6 sm-text-center mb-sm-30">
-                            &copy; Copyright 2020 - Jess By <a href="http://www.bootstrapmb.com/">bootstrapmb</a>
+                            &copy; Copyright 2020 - Profile By <a href="http://www.bootstrapmb.com/">bootstrapmb</a>
                         </div>
 
                         <div class="col-md-6 text-md-right text-sm-left">

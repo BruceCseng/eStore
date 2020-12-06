@@ -32,7 +32,7 @@ public class MessageVO implements Serializable {
 
     @ApiModelProperty(value = "邮箱",required = false)
     @Column(name = "email")
-    private Integer email;
+    private String email;
 
     @ApiModelProperty(value = "手机号",required = false)
     @Column(name = "phone")
@@ -58,11 +58,11 @@ public class MessageVO implements Serializable {
         this.name = name;
     }
 
-    public Integer getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Integer email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 

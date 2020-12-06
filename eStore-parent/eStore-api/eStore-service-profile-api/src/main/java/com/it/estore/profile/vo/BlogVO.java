@@ -54,6 +54,11 @@ public class BlogVO implements Serializable {
     @Column(name = "content_url")
     private String contentUrl;
 
+    /**
+     * 是否间隔小时，否则为天
+     */
+    private boolean isHours;
+
     public Integer getId() {
         return id;
     }
@@ -116,5 +121,13 @@ public class BlogVO implements Serializable {
 
     public void setContentUrl(String contentUrl) {
         this.contentUrl = contentUrl;
+    }
+
+    public boolean getIsHours() {
+        return isHours;
+    }
+
+    public void setIsHours(boolean hours) {
+        isHours = hours;
     }
 }
