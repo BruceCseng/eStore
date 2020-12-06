@@ -159,7 +159,7 @@ public class ProfileController {
                 writer.write("not");
                 return;
             }
-            redisUtils.setEx(ip, ip, 60L, TimeUnit.SECONDS);
+            redisUtils.setEx(ip, ip, 300L, TimeUnit.SECONDS);
             MessageVO messageVO = this.getMessageVO(request);
             profileFeign.addMessage(messageVO);
             writer.write("sent");
